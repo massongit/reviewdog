@@ -1312,10 +1312,26 @@ func TestGitHubPullRequest_Diff_fake(t *testing.T) {
 		if r.Method != http.MethodGet {
 			t.Errorf("unexpected access: %v %v", r.Method, r.URL)
 		}
-		if accept := r.Header.Get("Accept"); !strings.Contains(accept, "diff") {
+		if accept := r.Header.Get("Accept"); accept != "application/vnd.github.v3+json" {
 			t.Errorf("Accept header doesn't contain 'diff': %v", accept)
 		}
-		w.Write([]byte("Pull Request diff"))
+
+		headSHA := "HEAD^"
+		baseSHA := "HEAD"
+
+		pullRequestJson, err := json.Marshal(github.PullRequest{
+			Head: &github.PullRequestBranch{
+				SHA: &headSHA,
+			},
+			Base: &github.PullRequestBranch{
+				SHA: &baseSHA,
+			},
+		})
+		if err != nil {
+			t.Fatal(err)
+		}
+
+		w.Write(pullRequestJson)
 	})
 	ts := httptest.NewServer(mux)
 	defer ts.Close()

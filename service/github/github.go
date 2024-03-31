@@ -7,6 +7,7 @@ import (
 	"log"
 	"net/http"
 	"os"
+	"os/exec"
 	"path/filepath"
 	"strings"
 	"sync"
@@ -300,12 +301,17 @@ func (g *PullRequest) setPostedComment(ctx context.Context) error {
 
 // Diff returns a diff of PullRequest.
 func (g *PullRequest) Diff(ctx context.Context) ([]byte, error) {
-	opt := github.RawOptions{Type: github.Diff}
-	d, _, err := g.cli.PullRequests.GetRaw(ctx, g.owner, g.repo, g.pr, opt)
+	d, _, err := g.cli.PullRequests.Get(ctx, g.owner, g.repo, g.pr)
 	if err != nil {
 		return nil, err
 	}
-	return []byte(d), nil
+
+	bytes, err := exec.Command("git", "diff", "--find-renames", d.GetHead().GetSHA(), d.GetBase().GetSHA()).Output()
+	if err != nil {
+		return nil, fmt.Errorf("failed to run git diff: %w", err)
+	}
+
+	return bytes, nil
 }
 
 // Strip returns 1 as a strip of git diff.
