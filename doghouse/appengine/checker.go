@@ -10,8 +10,8 @@ import (
 
 	"github.com/vvakame/sdlog/aelog"
 
+	"github.com/massongit/reviewdog/doghouse/server"
 	"github.com/reviewdog/reviewdog/doghouse"
-	"github.com/reviewdog/reviewdog/doghouse/server"
 	"github.com/reviewdog/reviewdog/doghouse/server/ciutil"
 	"github.com/reviewdog/reviewdog/doghouse/server/storage"
 )

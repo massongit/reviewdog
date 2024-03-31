@@ -25,6 +25,7 @@ import (
 	"github.com/reviewdog/errorformat/fmts"
 	"github.com/xanzy/go-gitlab"
 
+	githubservice "github.com/massongit/reviewdog/service/github"
 	"github.com/reviewdog/reviewdog"
 	"github.com/reviewdog/reviewdog/cienv"
 	"github.com/reviewdog/reviewdog/commands"
@@ -34,7 +35,6 @@ import (
 	bbservice "github.com/reviewdog/reviewdog/service/bitbucket"
 	gerritservice "github.com/reviewdog/reviewdog/service/gerrit"
 	giteaservice "github.com/reviewdog/reviewdog/service/gitea"
-	githubservice "github.com/reviewdog/reviewdog/service/github"
 	gitlabservice "github.com/reviewdog/reviewdog/service/gitlab"
 )
 
