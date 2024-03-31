@@ -13,10 +13,10 @@ import (
 	"golang.org/x/oauth2"
 	"golang.org/x/sync/errgroup"
 
+	"github.com/massongit/reviewdog/doghouse/client"
 	"github.com/reviewdog/reviewdog"
 	"github.com/reviewdog/reviewdog/cienv"
 	"github.com/reviewdog/reviewdog/doghouse"
-	"github.com/reviewdog/reviewdog/doghouse/client"
 	"github.com/reviewdog/reviewdog/filter"
 	"github.com/reviewdog/reviewdog/project"
 	"github.com/reviewdog/reviewdog/proto/rdf"
