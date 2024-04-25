@@ -2,6 +2,20 @@ name: Go
 on: [push,pull_request]
 jobs:
 
+  test2:
+    name: Test2
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - run: |
+          set -e
+          cd "${GITHUB_WORKSPACE}" || exit 1
+          
+          TEMP_PATH="$(mktemp -d)"
+          PATH="${TEMP_PATH}:$PATH"
+          
+          curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b "${TEMP_PATH}" 2>&1
+          reviredog --version
   test:
     permissions:
       contents: read
