@@ -15,7 +15,7 @@ jobs:
           PATH="${TEMP_PATH}:$PATH"
           
           curl -sfL https://raw.githubusercontent.com/reviewdog/reviewdog/master/install.sh | sh -s -- -b "${TEMP_PATH}" 2>&1
-          reviredog --version
+          reviewdog --version
   test:
     permissions:
       contents: read
