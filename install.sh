@@ -303,8 +303,10 @@ github_release() {
   test -z "$version" && version="latest"
   giturl="https://github.com/${owner_repo}/releases/${version}"
   json=$(http_copy "$giturl" "Accept:application/json")
+  echo "$json"
   test -z "$json" && return 1
   version=$(echo "$json" | tr -s '\n' ' ' | sed 's/.*"tag_name":"//' | sed 's/".*//')
+  echo "$version"
   test -z "$version" && return 1
   echo "$version"
 }
