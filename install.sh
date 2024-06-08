@@ -264,6 +264,7 @@ http_download_curl() {
     code=$(curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url")
     log_info curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url"
   fi
+  log_info $code
   if [ "$code" != "200" ]; then
     log_debug "http_download_curl received HTTP status $code"
     return 1
