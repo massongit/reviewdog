@@ -258,11 +258,11 @@ http_download_curl() {
   source_url=$2
   header=$3
   if [ -z "$header" ]; then
-    code=$(curl -w '%{http_code}' -sL -o "$local_file" "$source_url" -v)
-    log_info curl -w '%{http_code}' -sL -o "$local_file" "$source_url" -v
+    code=$(curl -w '%{http_code}' -sL -o "$local_file" "$source_url" --insecure -v)
+    log_info curl -w '%{http_code}' -sL -o "$local_file" "$source_url" --insecure -v
   else
-    code=$(curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url" -v)
-    log_info curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url" -v
+    code=$(curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url" --insecure -v)
+    log_info curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url" --insecure -v
   fi
   log_info $code
   if [ "$code" != "200" ]; then
