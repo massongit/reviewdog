@@ -294,6 +294,7 @@ http_copy() {
   tmp=$(mktemp)
   http_download "${tmp}" "$1" "$2" || return 1
   body=$(cat "$tmp")
+  echo "$body"
   rm -f "${tmp}"
   echo "$body"
 }
