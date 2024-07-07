@@ -158,7 +158,7 @@ func (df *DiffFilter) isSignificantLine(line *diff.Line) bool {
 		return true // any lines in diff are significant.
 	case ModeAdded, ModeDefault:
 		fmt.Printf("%+v\n", line)
-		return line.Type == diff.LineAdded
+		return line.Type == diff.LineAdded || line.Type == diff.LineUnchanged
 	}
 	return false
 }
