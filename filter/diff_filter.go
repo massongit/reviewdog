@@ -113,8 +113,9 @@ func (df *DiffFilter) addDiff(filediffs []*diff.FileDiff) {
 		for _, hunk := range filediff.Hunks {
 			for _, line := range hunk.Lines {
 				if line.LnumNew > 0 {
-					fmt.Printf("%+v\n", line)
 					lines[line.LnumNew] = line
+				} else {
+					fmt.Printf("%+v\n", line)
 				}
 			}
 		}
