@@ -67,7 +67,6 @@ func (p *DiffParser) Parse(r io.Reader) ([]*rdf.Diagnostic, error) {
 				state = dstate{}
 			}
 			for i, diffLine := range hunk.Lines {
-				fmt.Printf("%+v\n", diffLine)
 				switch diffLine.Type {
 				case diff.LineAdded:
 					if i == 0 {

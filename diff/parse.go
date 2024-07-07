@@ -124,6 +124,7 @@ func (p *fileParser) parseHunks() ([]*Hunk, error) {
 		if h == nil {
 			break
 		}
+		fmt.Printf("%+v\n", h)
 		hunks = append(hunks, h)
 	}
 	return hunks, nil
