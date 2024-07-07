@@ -117,8 +117,6 @@ func (w *Reviewdog) Run(ctx context.Context, r io.Reader) error {
 		return fmt.Errorf("parse error: %w", err)
 	}
 
-	fmt.Printf("%+v\n", results)
-
 	d, err := w.d.Diff(ctx)
 	if err != nil {
 		return fmt.Errorf("fail to get diff: %w", err)
@@ -128,6 +126,8 @@ func (w *Reviewdog) Run(ctx context.Context, r io.Reader) error {
 	if err != nil {
 		return fmt.Errorf("fail to parse diff: %w", err)
 	}
+
+	fmt.Printf("%+v\n", results)
 
 	return w.runFromResult(ctx, results, filediffs, w.d.Strip(), w.failOnError)
 }
