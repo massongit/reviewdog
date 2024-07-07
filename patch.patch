@@ -1,0 +1,20 @@
+diff --git a/README.md b/README.md
+index 59ade887..1ded0e87 100644
+--- a/README.md
++++ b/README.md
+@@ -120,6 +120,7 @@ $ wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/inst
+ 
+ You can also use [nightly reviewdog release](https://github.com/reviewdog/nightly)
+ to try the latest reviewdog improvements every day!
++
+ ```shell
+ $ curl -sfL https://raw.githubusercontent.com/reviewdog/nightly/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
+ ```
+@@ -133,7 +134,6 @@ steps:
+     reviewdog_version: latest # Optional. [latest,nightly,v.X.Y.Z]
+ ```
+ 
+-
+ ### homebrew / linuxbrew
+ You can also install reviewdog using brew:
+ 
