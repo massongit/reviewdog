@@ -124,7 +124,6 @@ func (p *fileParser) parseHunks() ([]*Hunk, error) {
 		if h == nil {
 			break
 		}
-		fmt.Printf("%+v\n", h)
 		hunks = append(hunks, h)
 	}
 	return hunks, nil
@@ -286,6 +285,7 @@ endhunk:
 				line.LnumOld = lold
 				lold++
 			}
+			fmt.Printf("%+v\n", line)
 			hunk.Lines = append(hunk.Lines, line)
 		case tokenNoNewlineAtEOF:
 			// skip \ No newline at end of file. just consume line
