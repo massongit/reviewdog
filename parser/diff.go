@@ -79,6 +79,7 @@ func (p *DiffParser) Parse(r io.Reader) ([]*rdf.Diagnostic, error) {
 						// Insert.
 						state.startLine = lnum + 1
 						state.isInsert = true
+						fmt.Printf("%+v\n", state)
 					case diff.LineDeleted, diff.LineAdded:
 						// Do nothing in particular.
 					}
@@ -109,7 +110,6 @@ func (p *DiffParser) Parse(r io.Reader) ([]*rdf.Diagnostic, error) {
 			}
 		}
 	}
-	fmt.Printf("%+v\n", diagnostics)
 	return diagnostics, nil
 }
 
