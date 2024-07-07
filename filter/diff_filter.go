@@ -132,6 +132,7 @@ func (df *DiffFilter) ShouldReport(path string, lnum int) (bool, *diff.FileDiff,
 	}
 	line, ok := lines[lnum]
 	if !ok {
+		fmt.Printf("%+v %d\n", lines, lnum)
 		return df.mode == ModeNoFilter || df.mode == ModeFile, file, nil
 	}
 	return df.isSignificantLine(line), file, line
@@ -157,7 +158,6 @@ func (df *DiffFilter) isSignificantLine(line *diff.Line) bool {
 	case ModeDiffContext, ModeFile, ModeNoFilter:
 		return true // any lines in diff are significant.
 	case ModeAdded, ModeDefault:
-		fmt.Printf("%+v\n", line)
 		return line.Type == diff.LineAdded
 	}
 	return false
