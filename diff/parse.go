@@ -279,7 +279,6 @@ endhunk:
 				line.LnumDiff = p.lnumdiff
 				line.LnumNew = lnew
 				lnew++
-				fmt.Printf("%+v\n", line)
 			case tokenDeletedLine:
 				line.Type = LineDeleted
 				line.LnumDiff = p.lnumdiff
