@@ -134,7 +134,6 @@ func (df *DiffFilter) ShouldReport(path string, lnum int) (bool, *diff.FileDiff,
 	if !ok {
 		return df.mode == ModeNoFilter || df.mode == ModeFile, file, nil
 	}
-	fmt.Printf("%+v %+v\n", line)
 	return df.isSignificantLine(line), file, line
 }
 

@@ -109,6 +109,7 @@ func (p *DiffParser) Parse(r io.Reader) ([]*rdf.Diagnostic, error) {
 			}
 		}
 	}
+	fmt.Printf("%+v\n", diagnostics)
 	return diagnostics, nil
 }
 
