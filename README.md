@@ -120,7 +120,6 @@ $ wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/inst
 
 You can also use [nightly reviewdog release](https://github.com/reviewdog/nightly)
 to try the latest reviewdog improvements every day!
-
 ```shell
 $ curl -sfL https://raw.githubusercontent.com/reviewdog/nightly/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 ```
@@ -133,6 +132,7 @@ steps:
   with:
     reviewdog_version: latest # Optional. [latest,nightly,v.X.Y.Z]
 ```
+
 
 ### homebrew / linuxbrew
 You can also install reviewdog using brew:
