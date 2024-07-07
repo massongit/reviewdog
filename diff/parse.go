@@ -261,11 +261,11 @@ endhunk:
 			break
 		}
 		token := string(b)
-		fmt.Printf("%s\n", token)
 		switch token {
 		case tokenUnchangedLine, tokenAddedLine, tokenDeletedLine:
 			p.lnumdiff++
 			l, _ := readline(p.r)
+			fmt.Printf("%s\n", l)
 			line := &Line{Content: l[len(token):]} // trim first token
 			switch token {
 			case tokenUnchangedLine:
