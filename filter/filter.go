@@ -81,9 +81,9 @@ func FilterCheck(results []*rdf.Diagnostic, diff []*diff.FileDiff, strip int,
 				check.FirstSuggestionInDiffContext = inDiffContext
 			}
 		}
+		fmt.Printf("%#v\n", check)
 		checks = append(checks, check)
 	}
-	fmt.Printf("%#v\n", checks)
 	return checks
 }
 
