@@ -119,8 +119,8 @@ $ wget -O - -q https://raw.githubusercontent.com/reviewdog/reviewdog/master/inst
 ### Nightly releases
 
 You can also use [nightly reviewdog release](https://github.com/reviewdog/nightly)
-to try the latest reviewdog improvements every day!
-```shell
+to try the latest reviewdog improvements every day!!
+```shelll
 $ curl -sfL https://raw.githubusercontent.com/reviewdog/nightly/master/install.sh | sh -s -- -b $(go env GOPATH)/bin
 ```
 
