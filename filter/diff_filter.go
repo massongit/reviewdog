@@ -143,15 +143,12 @@ func (df *DiffFilter) DiffLine(path string, lnum int) *diff.Line {
 	npath := df.normalizePath(path)
 	lines, ok := df.difflines[npath]
 	if !ok {
-		fmt.Printf("A: %+v %+v\n", df.difflines, npath)
 		return nil
 	}
 	line, ok := lines[lnum]
 	if !ok {
-		fmt.Printf("B: %+v %d\n", lines, lnum)
 		return nil
 	}
-	fmt.Printf("C: %+v %s %d\n", line, path, lnum)
 	return line
 }
 
