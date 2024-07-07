@@ -1,7 +1,6 @@
 package filter
 
 import (
-	"fmt"
 	"github.com/reviewdog/reviewdog/diff"
 	"github.com/reviewdog/reviewdog/pathutil"
 	"github.com/reviewdog/reviewdog/proto/rdf"
@@ -72,7 +71,6 @@ func FilterCheck(results []*rdf.Diagnostic, diff []*diff.FileDiff, strip int,
 			end := int(s.GetRange().GetEnd().GetLine())
 			for l := start; l <= end; l++ {
 				if diffline := df.DiffLine(loc.GetPath(), l); diffline != nil {
-					fmt.Printf("%+v\n", diffline.Content)
 					check.SourceLines[l] = diffline.Content
 				} else {
 					inDiffContext = false
