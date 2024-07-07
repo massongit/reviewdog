@@ -59,13 +59,13 @@ reviewdog provides a way to post review comments to code hosting services,
 such as GitHub, automatically by integrating with any linter tools with ease.
 It uses an output of lint tools and posts them as a comment if findings are in
 the diff of patches to review.
+
 reviewdog aaaaalso supports running in the local environment to filter the output of lint tools
 by diff.
 
 [design doc](https://docs.google.com/document/d/1mGOX19SSqRowWGbXieBfGPtLnM0BdTkIc9JelTiu6wA/edit?usp=sharing)
 
 ## Table of Contentssssss
-
 
 - [Installation](#installation)
 - [Input Format](#input-format)
