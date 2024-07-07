@@ -1,7 +1,6 @@
 package filter
 
 import (
-	"fmt"
 	"github.com/reviewdog/reviewdog/diff"
 	"github.com/reviewdog/reviewdog/pathutil"
 	"github.com/reviewdog/reviewdog/proto/rdf"
@@ -52,7 +51,6 @@ func FilterCheck(results []*rdf.Diagnostic, diff []*diff.FileDiff, strip int,
 		for l := startLine; l <= endLine; l++ {
 			shouldReport, difffile, diffline := df.ShouldReport(loc.GetPath(), l)
 			check.ShouldReport = check.ShouldReport || shouldReport
-			fmt.Printf("%+v\n", check)
 			// all lines must be in diff.
 			check.InDiffContext = check.InDiffContext && diffline != nil
 			if diffline != nil {
