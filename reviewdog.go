@@ -87,6 +87,7 @@ func (w *Reviewdog) runFromResult(ctx context.Context, results []*rdf.Diagnostic
 					return err
 				}
 			} else {
+				println(check.Diagnostic.OriginalOutput)
 				continue
 			}
 		} else {

@@ -1,7 +1,6 @@
 package filter
 
 import (
-	"fmt"
 	"github.com/reviewdog/reviewdog/diff"
 	"github.com/reviewdog/reviewdog/pathutil"
 	"github.com/reviewdog/reviewdog/proto/rdf"
@@ -81,7 +80,6 @@ func FilterCheck(results []*rdf.Diagnostic, diff []*diff.FileDiff, strip int,
 				check.FirstSuggestionInDiffContext = inDiffContext
 			}
 		}
-		fmt.Printf("%+v\n", check)
 		checks = append(checks, check)
 	}
 	return checks
