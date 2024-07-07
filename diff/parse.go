@@ -261,6 +261,7 @@ endhunk:
 			break
 		}
 		token := string(b)
+		fmt.Printf("%s\n", token)
 		switch token {
 		case tokenUnchangedLine, tokenAddedLine, tokenDeletedLine:
 			p.lnumdiff++
@@ -285,7 +286,6 @@ endhunk:
 				line.LnumOld = lold
 				lold++
 			}
-			fmt.Printf("%+v\n", line)
 			hunk.Lines = append(hunk.Lines, line)
 		case tokenNoNewlineAtEOF:
 			// skip \ No newline at end of file. just consume line
