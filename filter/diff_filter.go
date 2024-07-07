@@ -114,8 +114,6 @@ func (df *DiffFilter) addDiff(filediffs []*diff.FileDiff) {
 			for _, line := range hunk.Lines {
 				if line.LnumNew > 0 {
 					lines[line.LnumNew] = line
-				} else {
-					fmt.Printf("%+v\n", line)
 				}
 			}
 		}
@@ -159,6 +157,7 @@ func (df *DiffFilter) isSignificantLine(line *diff.Line) bool {
 	case ModeDiffContext, ModeFile, ModeNoFilter:
 		return true // any lines in diff are significant.
 	case ModeAdded, ModeDefault:
+		fmt.Printf("%+v\n", line)
 		return line.Type == diff.LineAdded
 	}
 	return false
