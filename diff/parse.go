@@ -265,6 +265,7 @@ endhunk:
 		case tokenUnchangedLine, tokenAddedLine, tokenDeletedLine:
 			p.lnumdiff++
 			l, _ := readline(p.r)
+			fmt.Printf("%s\n", l)
 			line := &Line{Content: l[len(token):]} // trim first token
 			switch token {
 			case tokenUnchangedLine:
