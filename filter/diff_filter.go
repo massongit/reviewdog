@@ -117,6 +117,7 @@ func (df *DiffFilter) addDiff(filediffs []*diff.FileDiff) {
 				}
 			}
 		}
+		fmt.Printf("%+v\n", path)
 		df.difflines[path] = lines
 	}
 }
@@ -128,7 +129,6 @@ func (df *DiffFilter) ShouldReport(path string, lnum int) (bool, *diff.FileDiff,
 	file := df.difffiles[npath]
 	lines, ok := df.difflines[npath]
 	if !ok {
-		fmt.Printf("%+v %d\n", df.difflines, npath)
 		return df.mode == ModeNoFilter, file, nil
 	}
 	line, ok := lines[lnum]
