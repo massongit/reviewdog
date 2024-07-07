@@ -74,12 +74,12 @@ func (p *DiffParser) Parse(r io.Reader) ([]*rdf.Diagnostic, error) {
 					}
 					state.newLines = append(state.newLines, diffLine.Content)
 					state.originalLines = append(state.originalLines, buildOriginalLine(path, diffLine))
+					fmt.Printf("%+v\n", state)
 					switch prevState {
 					case diff.LineUnchanged:
 						// Insert.
 						state.startLine = lnum + 1
 						state.isInsert = true
-						fmt.Printf("%+v\n", state)
 					case diff.LineDeleted, diff.LineAdded:
 						// Do nothing in particular.
 					}
