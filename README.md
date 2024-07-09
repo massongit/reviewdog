@@ -192,7 +192,7 @@ With this 'errorformat' feature, reviewdog can support any tool output with ease
 
 ### Available pre-defined 'errorformat'
 
-But, you don't have to write 'errorformat' in many cases. reviewdog supports
+But, you doesn't have to write 'errorformat' in many cases. reviewdog supports
 pre-defined errorformat for major tools.
 
 You can find available errorformat name by `reviewdog -list` and you can use it
