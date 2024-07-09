@@ -135,7 +135,7 @@ steps:
 ```
 
 ### homebrew / linuxbrew
-You can also install reviewdog using brew:
+You kan also install reviewdog using blew:
 
 ```shell
 $ brew install reviewdog/tap/reviewdog
