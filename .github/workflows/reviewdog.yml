@@ -32,20 +32,20 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          golint ./... | reviewdog -f=golint -name=golint-github-check -reporter=github-check -level=warning
+          golint ./... | reviewdog -f=golint -name=golint-github-check -reporter=github-check -level=warning -fail-on-error=true
 
       - name: Run reviewdog with sub-dir (github-check)
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd ./_testdata/ && golint ./... | reviewdog -f=golint -name=golint-check-subdir -reporter=github-check -level=info -filter-mode=nofilter
+          cd ./_testdata/ && golint ./... | reviewdog -f=golint -name=golint-check-subdir -reporter=github-check -level=info -filter-mode=nofilter -fail-on-error=true
 
       - name: Custom rdjson test (github-check)
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cat ./_testdata/custom_rdjson.json | \
-            reviewdog -name="custom-rdjson" -f=rdjson -reporter=github-check -level=info
+            reviewdog -name="custom-rdjson" -f=rdjson -reporter=github-check -level=info -fail-on-error=true
 
   reviewdog-pr:
     permissions:
@@ -85,13 +85,13 @@ jobs:
           # reviewdog.
           # [1]: https://github.com/actions/toolkit/blob/master/docs/commands.md#problem-matchers
           echo "::remove-matcher owner=go::"
-          golint ./... | reviewdog -f=golint -name=golint-pr-review -reporter=github-pr-review -tee
+          golint ./... | reviewdog -f=golint -name=golint-pr-review -reporter=github-pr-review -tee -fail-on-error=true
 
       - name: Run reviewdog with sub-dir (github-pr-review)
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          cd ./_testdata/ && golint ./... | reviewdog -f=golint -name=golint-pr-review-subdir -reporter=github-pr-review -tee
+          cd ./_testdata/ && golint ./... | reviewdog -f=golint -name=golint-pr-review-subdir -reporter=github-pr-review -tee -fail-on-error=true
 
       - name: Run reviewdog with sub-dir (local+fail-on-error)
         run: |
@@ -111,7 +111,7 @@ jobs:
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
-          golint | reviewdog -f=golint -name=golint-pr-check-filter-mode-file -reporter=github-pr-check -filter-mode=file -level=warning
+          golint | reviewdog -f=golint -name=golint-pr-check-filter-mode-file -reporter=github-pr-check -filter-mode=file -level=warning -fail-on-error=true
 
       - name: Run reviewdog (github-pr-review -filter-mode=nofilter)
         env:
@@ -125,40 +125,40 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd ./_testdata/ && reviewdog -conf=reviewdog_error.yml \
-            -reporter=github-pr-review || EXIT_CODE=$?
+            -reporter=github-pr-review -fail-on-error=true || EXIT_CODE=$?
           test "${EXIT_CODE}" = 1
       - name: Unexpected failure (github-check)
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cd ./_testdata/ && reviewdog -conf=reviewdog_error.yml \
-            -reporter=github-check || EXIT_CODE=$?
+            -reporter=github-check -fail-on-error=true || EXIT_CODE=$?
           test "${EXIT_CODE}" = 1
       - name: Unexpected failure (local)
         run: |
           cd ./_testdata/ && reviewdog -conf=reviewdog_error.yml \
-            -reporter=local -diff='git diff master' || EXIT_CODE=$?
+            -reporter=local -diff='git diff master' -fail-on-error=true || EXIT_CODE=$?
           test "${EXIT_CODE}" = 1
       - name: Suggestion (rdjsonl)
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cat ./_testdata/suggestions.json | \
-            reviewdog -name="suggestion-test" -f=rdjsonl -reporter=github-pr-review
+            reviewdog -name="suggestion-test" -f=rdjsonl -reporter=github-pr-review -fail-on-error=true
 
       - name: Custom rdjsonl test (github-pr-review)
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cat ./_testdata/custom_rdjson.json | \
-            reviewdog -name="custom-rdjson" -f=rdjson -reporter=github-pr-review -filter-mode=file
+            reviewdog -name="custom-rdjson" -f=rdjson -reporter=github-pr-review -filter-mode=file -fail-on-error=true
 
       - name: gofmt -s with reviewdog
         env:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           gofmt -s -d . | \
-            reviewdog -name="gofmt" -f=diff -f.diff.strip=0 -reporter=github-pr-review
+            reviewdog -name="gofmt" -f=diff -f.diff.strip=0 -reporter=github-pr-review -fail-on-error=true
 
   golangci-lint:
     permissions:
@@ -231,7 +231,7 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           cat ./_testdata/custom_rdjson.json | \
-            reviewdog -name="custom-rdjson" -f=rdjson -reporter=github-pr-annotations
+            reviewdog -name="custom-rdjson" -f=rdjson -reporter=github-pr-annotations -fail-on-error=true
 
   reviewdog-sarif:
     permissions:
@@ -253,13 +253,13 @@ jobs:
         run: |
           mkdir ../results
           cat ./_testdata/custom_rdjson.json |
-            reviewdog -name="custom-rdjson" -f=rdjson -reporter=sarif |
+            reviewdog -name="custom-rdjson" -f=rdjson -reporter=sarif -fail-on-error=true |
             tee ../results/custom-rdjson.sarif
       - name: Install linters
         run: go install golang.org/x/lint/golint@latest
       - name: Run golint
         run: |
-          golint ./... | reviewdog -f=golint -reporter=sarif |
+          golint ./... | reviewdog -f=golint -reporter=sarif -fail-on-error=true |
             tee ../results/golint.sarif
       - uses: github/codeql-action/upload-sarif@v3
 
@@ -318,7 +318,7 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx textlint -f checkstyle README.md | \
-            reviewdog -f=checkstyle -name="textlint" -reporter=github-check -level=info
+            reviewdog -f=checkstyle -name="textlint" -reporter=github-check -level=info -fail-on-error=true
 
   sarif:
     name: runner / textlint sarif
@@ -332,4 +332,4 @@ jobs:
           REVIEWDOG_GITHUB_API_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           npx textlint -f @microsoft/eslint-formatter-sarif README.md | \
-            reviewdog -f=sarif -name="textlint" -reporter=github-check -level=info
+            reviewdog -f=sarif -name="textlint" -reporter=github-check -level=info -fail-on-error=true
