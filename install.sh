@@ -258,10 +258,13 @@ http_download_curl() {
   source_url=$2
   header=$3
   if [ -z "$header" ]; then
+    log_info curl -w '%{http_code}' -sL -o "$local_file" "$source_url"
     code=$(curl -w '%{http_code}' -sL -o "$local_file" "$source_url")
   else
+    log_info curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url"
     code=$(curl -w '%{http_code}' -sL -H "$header" -o "$local_file" "$source_url")
   fi
+  log_info "$code"
   if [ "$code" != "200" ]; then
     log_debug "http_download_curl received HTTP status $code"
     return 1
@@ -273,8 +276,10 @@ http_download_wget() {
   source_url=$2
   header=$3
   if [ -z "$header" ]; then
+    log_info wget -q -O "$local_file" "$source_url"
     wget -q -O "$local_file" "$source_url"
   else
+    log_info wget -q --header "$header" -O "$local_file" "$source_url"
     wget -q --header "$header" -O "$local_file" "$source_url"
   fi
 }
