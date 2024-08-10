@@ -42,7 +42,7 @@ func (p *CheckStyleParser) Parse(r io.Reader) ([]*rdf.Diagnostic, error) {
 					file.Name, cerr.Line, cerr.Column, cerr.Severity, cerr.Message, cerr.Source),
 			}
 			if s := cerr.Source; s != "" {
-				d.Code = &rdf.Code{Value: s, Url: cerr.Link}
+				d.Code = &rdf.Code{Value: s}
 			}
 			ds = append(ds, d)
 		}
@@ -75,5 +75,4 @@ type CheckStyleError struct {
 	Message  string `xml:"message,attr"`
 	Severity string `xml:"severity,attr,omitempty"`
 	Source   string `xml:"source,attr,omitempty"`
-	Link     string `xml:"link,attr,omitempty"`
 }
