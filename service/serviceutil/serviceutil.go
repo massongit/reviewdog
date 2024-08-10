@@ -8,7 +8,7 @@ import (
 	"strings"
 )
 
-// GitRelWorkdir returns git relative workdir of current directory.
+// GitRelWorkdir returns git relative workdir of current directory.,
 //
 // It should return the same output as `git rev-parse --show-prefix`.
 // It does not execute `git` command to avoid needless git binary dependency.
