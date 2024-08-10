@@ -11,9 +11,9 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-github/v63/github"
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/filter"
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/filter"
+	"github.com/massongit/reviewdog/proto/rdf"
 )
 
 func TestCheck_OK(t *testing.T) {
@@ -246,7 +246,7 @@ func TestCheck_OK(t *testing.T) {
 			if wantTitle := "reviewdog [haya14busa-linter] report"; req.GetOutput().GetTitle() != wantTitle {
 				t.Errorf("title = %s, want %s", req.GetOutput().GetTitle(), wantTitle)
 			}
-			if wantSummary := `reported by [reviewdog](https://github.com/reviewdog/reviewdog) :dog:
+			if wantSummary := `reported by [reviewdog](https://github.com/massongit/reviewdog) :dog:
 <details>
 <summary>Findings (8)</summary>
 

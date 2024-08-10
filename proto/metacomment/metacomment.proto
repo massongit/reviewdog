@@ -1,7 +1,7 @@
 syntax = "proto3";
 package reviewdog.rdf;
 
-option go_package = "github.com/reviewdog/reviewdog/proto/metacomment";
+option go_package = "github.com/massongit/reviewdog/proto/metacomment";
 
 // Represents a metadata of a diagnostic result.
 // It's expected to be base64 encoded and included into reporter comments such

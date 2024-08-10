@@ -17,10 +17,10 @@ import (
 	"golang.org/x/oauth2"
 
 	"github.com/google/go-cmp/cmp"
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/filter"
-	"github.com/reviewdog/reviewdog/proto/rdf"
-	"github.com/reviewdog/reviewdog/service/commentutil"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/filter"
+	"github.com/massongit/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/service/commentutil"
 )
 
 const notokenSkipTestMes = "skipping test (requires actual Personal access tokens. export REVIEWDOG_TEST_GITHUB_API_TOKEN=<GitHub Personal Access Token>)"
@@ -64,7 +64,7 @@ func TestGitHubPullRequest_Post(t *testing.T) {
 		t.Skip(notokenSkipTestMes)
 	}
 
-	// https://github.com/reviewdog/reviewdog/pull/2
+	// https://github.com/massongit/reviewdog/pull/2
 	owner := "haya14busa"
 	repo := "reviewdog"
 	pr := 2
@@ -86,7 +86,7 @@ func TestGitHubPullRequest_Post(t *testing.T) {
 			InDiffContext: true,
 		},
 	}
-	// https://github.com/reviewdog/reviewdog/pull/2/files#diff-ed1d019a10f54464cfaeaf6a736b7d27L20
+	// https://github.com/massongit/reviewdog/pull/2/files#diff-ed1d019a10f54464cfaeaf6a736b7d27L20
 	if err := g.Post(context.Background(), comment); err != nil {
 		t.Error(err)
 	}
@@ -103,7 +103,7 @@ func TestGitHubPullRequest_comment(t *testing.T) {
 	if client == nil {
 		t.Skip(notokenSkipTestMes)
 	}
-	// https://github.com/reviewdog/reviewdog/pull/2
+	// https://github.com/massongit/reviewdog/pull/2
 	owner := "haya14busa"
 	repo := "reviewdog"
 	pr := 2
@@ -217,14 +217,14 @@ func TestGitHubPullRequest_Post_Flush_review_api(t *testing.T) {
 			}
 			expects := []github.PullRequestComment{
 				{
-					Body:        github.String("<sub>reported by [reviewdog](https://github.com/reviewdog/reviewdog) :dog:</sub><br>file comment (no-line)\n<!-- __reviewdog__:ChBkZDlkMDllNmM5MTllODU1Egl0b29sLW5hbWU= -->\n"),
+					Body:        github.String("<sub>reported by [reviewdog](https://github.com/massongit/reviewdog) :dog:</sub><br>file comment (no-line)\n<!-- __reviewdog__:ChBkZDlkMDllNmM5MTllODU1Egl0b29sLW5hbWU= -->\n"),
 					Path:        github.String("reviewdog.go"),
 					Side:        github.String("RIGHT"),
 					CommitID:    github.String("sha"),
 					SubjectType: github.String("file"),
 				},
 				{
-					Body: github.String(`<sub>reported by [reviewdog](https://github.com/reviewdog/reviewdog) :dog:</sub><br>file comment (outside diff-context)
+					Body: github.String(`<sub>reported by [reviewdog](https://github.com/massongit/reviewdog) :dog:</sub><br>file comment (outside diff-context)
 
 https://test/repo/path/blob/sha/reviewdog.go#L18
 <!-- __reviewdog__:ChA5Mzc1OWY5ZTRmMmI5NThhEgl0b29sLW5hbWU= -->

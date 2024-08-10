@@ -1,9 +1,9 @@
 package filter
 
 import (
-	"github.com/reviewdog/reviewdog/diff"
-	"github.com/reviewdog/reviewdog/pathutil"
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/diff"
+	"github.com/massongit/reviewdog/pathutil"
+	"github.com/massongit/reviewdog/proto/rdf"
 )
 
 // FilteredDiagnostic represents Diagnostic with filtering info.

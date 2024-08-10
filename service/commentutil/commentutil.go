@@ -5,8 +5,8 @@ import (
 	"log"
 	"strings"
 
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/proto/rdf"
 )
 
 // `path` to `position`(Lnum for new file) to comment `body` or `finterprint`
@@ -53,7 +53,7 @@ func (p PostedComments) DebugLog() {
 }
 
 // BodyPrefix is prefix text of comment body.
-const BodyPrefix = `<sub>reported by [reviewdog](https://github.com/reviewdog/reviewdog) :dog:</sub><br>`
+const BodyPrefix = `<sub>reported by [reviewdog](https://github.com/massongit/reviewdog) :dog:</sub><br>`
 
 // MarkdownComment creates comment body markdown.
 func MarkdownComment(c *reviewdog.Comment) string {

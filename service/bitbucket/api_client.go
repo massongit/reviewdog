@@ -4,7 +4,7 @@ import (
 	"context"
 	"fmt"
 
-	"github.com/reviewdog/reviewdog"
+	"github.com/massongit/reviewdog"
 )
 
 // ReportRequest is an object that represent parameters used to create/update report

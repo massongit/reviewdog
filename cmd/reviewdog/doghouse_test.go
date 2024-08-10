@@ -15,13 +15,13 @@ import (
 	"github.com/google/go-cmp/cmp"
 	"google.golang.org/protobuf/testing/protocmp"
 
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/cienv"
-	"github.com/reviewdog/reviewdog/doghouse"
-	"github.com/reviewdog/reviewdog/doghouse/client"
-	"github.com/reviewdog/reviewdog/filter"
-	"github.com/reviewdog/reviewdog/project"
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/cienv"
+	"github.com/massongit/reviewdog/doghouse"
+	"github.com/massongit/reviewdog/doghouse/client"
+	"github.com/massongit/reviewdog/filter"
+	"github.com/massongit/reviewdog/project"
+	"github.com/massongit/reviewdog/proto/rdf"
 )
 
 func TestDiagnosticResultSet_Project(t *testing.T) {
@@ -139,7 +139,7 @@ func TestPostResultSet_withReportURL(t *testing.T) {
 					Diagnostic: &rdf.Diagnostic{
 						Message: "name1: test 1",
 						Location: &rdf.Location{
-							Path: "cmd/reviewdog/reviewdog.go",
+							Path: "cmd/massongit/reviewdog.go",
 							Range: &rdf.Range{
 								Start: &rdf.Position{Line: 14},
 							},
@@ -151,7 +151,7 @@ func TestPostResultSet_withReportURL(t *testing.T) {
 					Diagnostic: &rdf.Diagnostic{
 						Message: "name1: test 2",
 						Location: &rdf.Location{
-							Path: "cmd/reviewdog/reviewdog.go",
+							Path: "cmd/massongit/reviewdog.go",
 						},
 					},
 				},

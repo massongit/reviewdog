@@ -8,12 +8,12 @@ import (
 
 	"github.com/google/go-github/v63/github"
 
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/diff"
-	"github.com/reviewdog/reviewdog/doghouse"
-	"github.com/reviewdog/reviewdog/filter"
-	"github.com/reviewdog/reviewdog/proto/rdf"
-	ghService "github.com/reviewdog/reviewdog/service/github"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/diff"
+	"github.com/massongit/reviewdog/doghouse"
+	"github.com/massongit/reviewdog/filter"
+	"github.com/massongit/reviewdog/proto/rdf"
+	ghService "github.com/massongit/reviewdog/service/github"
 )
 
 type Checker struct {

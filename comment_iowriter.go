@@ -7,7 +7,7 @@ import (
 	"io"
 
 	"github.com/haya14busa/go-sarif/sarif"
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/proto/rdf"
 	"google.golang.org/protobuf/encoding/protojson"
 )
 

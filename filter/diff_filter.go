@@ -3,9 +3,9 @@ package filter
 import (
 	"fmt"
 
-	"github.com/reviewdog/reviewdog/diff"
-	"github.com/reviewdog/reviewdog/pathutil"
-	"github.com/reviewdog/reviewdog/service/serviceutil"
+	"github.com/massongit/reviewdog/diff"
+	"github.com/massongit/reviewdog/pathutil"
+	"github.com/massongit/reviewdog/service/serviceutil"
 )
 
 // Mode represents enumeration of available filter modes

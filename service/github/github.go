@@ -16,14 +16,14 @@ import (
 	"github.com/google/go-github/v63/github"
 	"google.golang.org/protobuf/proto"
 
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/cienv"
-	"github.com/reviewdog/reviewdog/pathutil"
-	"github.com/reviewdog/reviewdog/proto/metacomment"
-	"github.com/reviewdog/reviewdog/proto/rdf"
-	"github.com/reviewdog/reviewdog/service/commentutil"
-	"github.com/reviewdog/reviewdog/service/github/githubutils"
-	"github.com/reviewdog/reviewdog/service/serviceutil"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/cienv"
+	"github.com/massongit/reviewdog/pathutil"
+	"github.com/massongit/reviewdog/proto/metacomment"
+	"github.com/massongit/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/service/commentutil"
+	"github.com/massongit/reviewdog/service/github/githubutils"
+	"github.com/massongit/reviewdog/service/serviceutil"
 )
 
 var _ reviewdog.CommentService = (*PullRequest)(nil)

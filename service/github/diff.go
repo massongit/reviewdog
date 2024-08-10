@@ -9,7 +9,7 @@ import (
 	"os/exec"
 
 	"github.com/google/go-github/v63/github"
-	"github.com/reviewdog/reviewdog"
+	"github.com/massongit/reviewdog"
 )
 
 var _ reviewdog.DiffService = (*PullRequestDiffService)(nil)

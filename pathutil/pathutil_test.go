@@ -4,7 +4,7 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/proto/rdf"
 )
 
 func TestNormalizePathInResults(t *testing.T) {

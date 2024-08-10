@@ -9,11 +9,11 @@ import (
 	"time"
 
 	"github.com/google/go-github/v63/github"
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/cienv"
-	"github.com/reviewdog/reviewdog/filter"
-	"github.com/reviewdog/reviewdog/proto/rdf"
-	"github.com/reviewdog/reviewdog/service/github/githubutils"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/cienv"
+	"github.com/massongit/reviewdog/filter"
+	"github.com/massongit/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/service/github/githubutils"
 )
 
 // GitHub check runs API cannot handle too large requests.
@@ -316,7 +316,7 @@ func (ch *Check) reqAnnotationLevel() string {
 func (ch *Check) summary(checks []*reviewdog.Comment) string {
 	var lines []string
 	var usedBytes int
-	lines = append(lines, "reported by [reviewdog](https://github.com/reviewdog/reviewdog) :dog:")
+	lines = append(lines, "reported by [reviewdog](https://github.com/massongit/reviewdog) :dog:")
 	usedBytes += len(lines[0]) + 1
 	var findings []*filter.FilteredDiagnostic
 	var filteredFindings []*filter.FilteredDiagnostic

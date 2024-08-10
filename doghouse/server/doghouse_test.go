@@ -10,8 +10,8 @@ import (
 
 	"github.com/google/go-cmp/cmp"
 	"github.com/google/go-github/v63/github"
-	"github.com/reviewdog/reviewdog/doghouse"
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/doghouse"
+	"github.com/massongit/reviewdog/proto/rdf"
 )
 
 const sampleDiff = `--- a/sample.old.txt	2016-10-13 05:09:35.820791185 +0900

@@ -8,8 +8,8 @@ import (
 	"path/filepath"
 
 	"github.com/haya14busa/go-sarif/sarif"
-	"github.com/reviewdog/reviewdog/proto/rdf"
-	"github.com/reviewdog/reviewdog/service/serviceutil"
+	"github.com/massongit/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/service/serviceutil"
 )
 
 var _ Parser = &SarifParser{}

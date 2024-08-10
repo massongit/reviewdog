@@ -5,7 +5,7 @@ import (
 	"log"
 	"os"
 
-	"github.com/reviewdog/reviewdog/service/github"
+	"github.com/massongit/reviewdog/service/github"
 )
 
 func main() {

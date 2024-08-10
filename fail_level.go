@@ -3,7 +3,7 @@ package reviewdog
 import (
 	"fmt"
 
-	"github.com/reviewdog/reviewdog/proto/rdf"
+	"github.com/massongit/reviewdog/proto/rdf"
 )
 
 // FailLevel represents enumeration of available filter modes

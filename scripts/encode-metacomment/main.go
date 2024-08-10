@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"os"
 
-	"github.com/reviewdog/reviewdog/service/github"
+	"github.com/massongit/reviewdog/service/github"
 )
 
 var fprint = flag.String("fprint", "", "fingerprint")

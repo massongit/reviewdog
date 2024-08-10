@@ -25,18 +25,18 @@ import (
 	"github.com/reviewdog/errorformat/fmts"
 	"github.com/xanzy/go-gitlab"
 
-	"github.com/reviewdog/reviewdog"
-	"github.com/reviewdog/reviewdog/cienv"
-	"github.com/reviewdog/reviewdog/commands"
-	"github.com/reviewdog/reviewdog/filter"
-	"github.com/reviewdog/reviewdog/parser"
-	"github.com/reviewdog/reviewdog/project"
-	bbservice "github.com/reviewdog/reviewdog/service/bitbucket"
-	gerritservice "github.com/reviewdog/reviewdog/service/gerrit"
-	giteaservice "github.com/reviewdog/reviewdog/service/gitea"
-	githubservice "github.com/reviewdog/reviewdog/service/github"
-	"github.com/reviewdog/reviewdog/service/github/githubutils"
-	gitlabservice "github.com/reviewdog/reviewdog/service/gitlab"
+	"github.com/massongit/reviewdog"
+	"github.com/massongit/reviewdog/cienv"
+	"github.com/massongit/reviewdog/commands"
+	"github.com/massongit/reviewdog/filter"
+	"github.com/massongit/reviewdog/parser"
+	"github.com/massongit/reviewdog/project"
+	bbservice "github.com/massongit/reviewdog/service/bitbucket"
+	gerritservice "github.com/massongit/reviewdog/service/gerrit"
+	giteaservice "github.com/massongit/reviewdog/service/gitea"
+	githubservice "github.com/massongit/reviewdog/service/github"
+	"github.com/massongit/reviewdog/service/github/githubutils"
+	gitlabservice "github.com/massongit/reviewdog/service/gitlab"
 )
 
 const usageMessage = "" +
@@ -236,7 +236,7 @@ func usage() {
 	fmt.Fprintln(os.Stderr, "Flags:")
 	flag.PrintDefaults()
 	fmt.Fprintln(os.Stderr, "")
-	fmt.Fprintln(os.Stderr, "See https://github.com/reviewdog/reviewdog for more detail.")
+	fmt.Fprintln(os.Stderr, "See https://github.com/massongit/reviewdog for more detail.")
 	os.Exit(2)
 }
 
@@ -482,8 +482,8 @@ func run(r io.Reader, w io.Writer, opt *option) error {
 
 func runList(w io.Writer) error {
 	tabw := tabwriter.NewWriter(w, 0, 8, 0, '\t', 0)
-	fmt.Fprintf(tabw, "%s\t%s\t- %s\n", "rdjson", "Reviewdog Diagnostic JSON Format (JSON of DiagnosticResult message)", "https://github.com/reviewdog/reviewdog")
-	fmt.Fprintf(tabw, "%s\t%s\t- %s\n", "rdjsonl", "Reviewdog Diagnostic JSONL Format (JSONL of Diagnostic message)", "https://github.com/reviewdog/reviewdog")
+	fmt.Fprintf(tabw, "%s\t%s\t- %s\n", "rdjson", "Reviewdog Diagnostic JSON Format (JSON of DiagnosticResult message)", "https://github.com/massongit/reviewdog")
+	fmt.Fprintf(tabw, "%s\t%s\t- %s\n", "rdjsonl", "Reviewdog Diagnostic JSONL Format (JSONL of Diagnostic message)", "https://github.com/massongit/reviewdog")
 	fmt.Fprintf(tabw, "%s\t%s\t- %s\n", "diff", "Unified Diff Format", "https://en.wikipedia.org/wiki/Diff#Unified_format")
 	fmt.Fprintf(tabw, "%s\t%s\t- %s\n", "checkstyle", "checkstyle XML format", "http://checkstyle.sourceforge.net/")
 	fmt.Fprintf(tabw, "%s\t%s\t- %s\n", "sarif", "SARIF JSON format", "https://sarifweb.azurewebsites.net/")
@@ -1035,7 +1035,7 @@ func localDiffService(opt *option) (reviewdog.DiffService, error) {
 
 func failLevel(opt *option) reviewdog.FailLevel {
 	if opt.failOnError {
-		slog.Warn("reviewdog: -fail-on-error is deprecated. Use -fail-level=any, or -fail-level=error for github-[pr-]check reporter instead. See also https://github.com/reviewdog/reviewdog/blob/master/CHANGELOG.md")
+		slog.Warn("reviewdog: -fail-on-error is deprecated. Use -fail-level=any, or -fail-level=error for github-[pr-]check reporter instead. See also https://github.com/massongit/reviewdog/blob/master/CHANGELOG.md")
 		if opt.failLevel == reviewdog.FailLevelDefault {
 			switch opt.reporter {
 			default:
